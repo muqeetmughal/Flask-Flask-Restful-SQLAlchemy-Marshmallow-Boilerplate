@@ -1,4 +1,8 @@
+flask
+sqlalchemy
 flask-marshmallow
 Flask-RESTful
 marshmallow-sqlalchemy
 python-dotenv
+pymysql
+Flask-JWT-Extended
