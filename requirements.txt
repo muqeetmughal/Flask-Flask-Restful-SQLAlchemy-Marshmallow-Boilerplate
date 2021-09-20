@@ -6,3 +6,4 @@ marshmallow-sqlalchemy
 python-dotenv
 pymysql
 Flask-JWT-Extended
+marshmallow

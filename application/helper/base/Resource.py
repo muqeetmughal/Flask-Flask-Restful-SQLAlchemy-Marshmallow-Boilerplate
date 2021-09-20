@@ -2,9 +2,22 @@ from flask_restful import Resource
 from application.database import db_session
 from flask_restful import abort
 from sqlalchemy.exc import IntegrityError
-
+from marshmallow import ValidationError
+from flask import request
 
 class BaseResource(Resource):
+    def load_model_object(self, schema):
+        try:
+            request_data = request.get_json()
+            if request_data:
+                return schema.load(request_data)
+            else:
+                abort(404, response={
+                    'message': 'Something Wrong in Base Resource'
+                })
+        except ValidationError as err:
+            self.abort(400, err.normalized_messages())
+
     def find(self, model, **kwargs):
         record = model.query.filter_by(**kwargs).first()
         return record
