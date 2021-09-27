@@ -5,6 +5,7 @@ from sqlalchemy.exc import IntegrityError
 from marshmallow import ValidationError
 from flask import request
 
+
 class BaseResource(Resource):
     def load_model_object(self, schema):
         try:
